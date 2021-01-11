@@ -1,38 +1,124 @@
 .App {
-  text-align: center;
+ height: 100vh;
+ width: 100vw;
+ /* color: #cecece; */
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg-img{
+ 
+
+ /* The image used */
+ background-image: url("./img/bocharest.jpg");
+
+ /* Add the blur effect */
+ filter: blur(8px);
+ -webkit-filter: blur(8px);
+
+ /* Full height */
+ height: 100%;
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+.cart{
+  border: 1px solid;
+  background-color: rgb(243, 243, 243); /* Fallback color */
+  background-color: rgba(255, 249, 249, 0.4); /* Black w/opacity/see-through */
+  color: #fffbfb;
+  font-weight: 500; 
+  /* border: 3px solid #f1f1f1; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  /* padding: 20px; */
+  /* text-align: center */
+  height: 80%;
+  -webkit-box-shadow: 0px 4px 35px 0px rgba(7,7,7,0.64); 
+  box-shadow: 0px 4px 35px 0px rgba(7,7,7,0.64);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main{
+  background-image: url("./img/bocharest.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.location{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.location-name{
+  font-size: 24px;
+}
+
+.location-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size : 20px;
+}
+
+.forecast{
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast-day{
+  width: 13%;
+  border-left: 1px solid whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+}
+.forecast-day span{
+  font-size: 12px;
+}
+
+.forecast-day .fa-cloud-showers-heavy{
+  margin-right: 5px;
+}
+
+.today{
+  flex-grow: 1;
+  display: flex;
+  font-size: 72px;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.temperature {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.temperature span{
+  font-size: 12px;
+  margin-top: -15px;
+ color: rgb(175, 175, 175);
+  padding: 2px 7px;
+  
+  border-radius:20px;
+  margin-right: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.today .fa-cloud-showers-heavy{
+  margin-top: 20px;
 }
+
