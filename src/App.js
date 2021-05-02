@@ -19,22 +19,22 @@ function App() {
   // }, []);
 
 
-  const [position,setPosition]=useState({})
+  const [forecase,setForecase]=useState([])
   const [error,setError]=useState(null)
   const [weather,setWeather]=useState({})
+  const [date,setDate] = useState(null);
+  const time = new Date(1610635190 * 1000);
 
   const onChange=({coords})=>{
-      // console.log('coords.latitude : '+coords.latitude)
-      // console.log('coords.longitude : '+coords.longitude)
-      setPosition({
-        latitude: coords.latitude,
-        longitude: coords.longitude,
-      })
+      
+ 
       // console.log(position.latitude!=coords.latitude)
-        
-          return axios.get(`data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=3e3f2591f46e6acfd136e70b83e46680&units=metric`)
+      
+          return axios.get(`/data/2.5/onecall?lat=${coords.latitude}&lon=${coords.longitude}&appid=3e3f2591f46e6acfd136e70b83e46680&units=metric`)
           .then(function(rep){
-            setWeather(rep.data.main)
+            setWeather(rep.data.current)
+            setForecase(rep.data.daily)
+            // setDate(new Date(rep. * 1000))
             // console.log("rep ",rep.data.weather)
           }).catch(function (error) {
            // handle error
@@ -51,8 +51,9 @@ function App() {
   useEffect(()=>{
       const geo=navigator.geolocation
       // console.log(Date(1610635190 * 1000).getFullYear())
-      var a = new Date(1610635190 * 1000);
-      console.log(a.getFullYear())
+      
+      // console.log(time.getDate())
+      console.log(timeConverter(weather.dt))
       if(!geo){
           setError('geolocation is not supported')
           return;
@@ -76,8 +77,7 @@ function App() {
               Buch<span>arest,RO</span>
               <div>{
                   
-                  // a.getMinutes
-              
+                  timeConverter(weather.dt).year              
               }</div>
             </div>
             <div className="location-info">
@@ -153,6 +153,17 @@ function App() {
       </div>
     </div>
   );
+}
+
+function timeConverter(UNIX_timestamp){
+  var date = new Date(UNIX_timestamp * 1000);
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  var day = date.getDate();
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  return {year,day,month,hour,min};
 }
 
 export default App;
